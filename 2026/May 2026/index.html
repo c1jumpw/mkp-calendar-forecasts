@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Webinars — May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f9f8f5; font-family: 'DM Sans', system-ui, sans-serif; padding: 2rem; color: #1a1a1a; }
+
+.aw-root { max-width: 780px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 2rem; border: 1px solid rgba(0,0,0,0.08); }
+
+.aw-header { border-bottom: 1.5px solid rgba(0,0,0,0.35); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.aw-week-label { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; margin-bottom: 4px; }
+.aw-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 24px; font-weight: 400; color: #1a1a1a; line-height: 1.2; }
+.aw-subtitle { font-size: 13px; color: #6b6b6b; margin-top: 4px; }
+
+.aw-tabs { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.aw-tab { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(0,0,0,0.25); cursor: pointer; background: transparent; color: #6b6b6b; transition: all .15s; font-family: 'DM Sans', system-ui, sans-serif; }
+.aw-tab:hover { background: #f5f5f3; color: #1a1a1a; }
+.aw-tab.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.aw-tab.today-tab { border-color: #1D9E75; color: #1D9E75; }
+.aw-tab.today-tab.active { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+
+.aw-day { display: none; }
+.aw-day.active { display: block; }
+
+.aw-day-header { font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: #6b6b6b; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.aw-today-badge { font-size: 10px; font-weight: 500; background: #E1F5EE; color: #0F6E56; padding: 2px 8px; border-radius: 10px; letter-spacing: 0; text-transform: none; }
+.aw-od-badge { font-size: 10px; font-weight: 500; background: #f5f5f3; color: #6b6b6b; padding: 2px 8px; border-radius: 10px; letter-spacing: 0; text-transform: none; }
+
+.aw-sessions { display: flex; flex-direction: column; gap: 8px; }
+
+.aw-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 12px 14px; display: grid; grid-template-columns: 64px 1fr auto; gap: 0 14px; align-items: start; }
+.aw-card:hover { border-color: rgba(0,0,0,0.25); }
+
+.aw-time-col { display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
+.aw-time { font-size: 12px; font-weight: 500; color: #1a1a1a; white-space: nowrap; }
+.aw-tz { font-size: 10px; color: #9b9b9b; }
+
+.aw-body { min-width: 0; }
+.aw-topic-pill { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; }
+.aw-card-title { font-size: 14px; font-weight: 500; color: #1a1a1a; line-height: 1.4; margin-bottom: 3px; }
+.aw-card-source { font-size: 11px; color: #6b6b6b; }
+.aw-card-desc { font-size: 12px; color: #6b6b6b; margin-top: 5px; line-height: 1.5; }
+
+.aw-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 2px; }
+.aw-free { font-size: 11px; font-weight: 500; color: #0F6E56; white-space: nowrap; }
+.aw-rsvp { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px; border: 0.5px solid rgba(0,0,0,0.25); color: #6b6b6b; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.aw-rsvp:hover { background: #f5f5f3; color: #1a1a1a; }
+
+.aw-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; }
+.aw-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #6b6b6b; }
+.aw-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-sb { background: #1D9E75; }
+.dot-fin { background: #BA7517; }
+.dot-tech { background: #534AB7; }
+.dot-mkt { background: #D4537E; }
+.dot-sec { background: #E24B4A; }
+.dot-hr { background: #185FA5; }
+
+.pill-sb { background: #E1F5EE; color: #085041; }
+.pill-fin { background: #FAEEDA; color: #633806; }
+.pill-tech { background: #EEEDFE; color: #3C3489; }
+.pill-mkt { background: #FBEAF0; color: #72243E; }
+.pill-sec { background: #FCEBEB; color: #791F1F; }
+.pill-hr { background: #E6F1FB; color: #0C447C; }
+
+.aw-footer { margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid rgba(0,0,0,0.12); font-size: 11px; color: #9b9b9b; }
+</style>
+</head>
+<body>
+
+<div class="aw-root">
+  <div class="aw-header">
+    <div class="aw-week-label">National Small Business Week · May 3–9, 2026</div>
+    <div class="aw-title">Business &amp; Skills Webinar Calendar</div>
+    <div class="aw-subtitle">Live virtual sessions · Free unless noted · On-demand replays available</div>
+  </div>
+
+  <div class="aw-legend">
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-sb"></div>Small Business</div>
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-fin"></div>Finance &amp; Funding</div>
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-tech"></div>Tech &amp; AI</div>
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-mkt"></div>Marketing</div>
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-sec"></div>Cybersecurity</div>
+    <div class="aw-legend-item"><div class="aw-legend-dot dot-hr"></div>HR &amp; Ops</div>
+  </div>
+
+  <div class="aw-tabs">
+    <button class="aw-tab" onclick="switchTab('may5', this)">Tue · May 5 On-Demand</button>
+    <button class="aw-tab" onclick="switchTab('may6', this)">Wed · May 6 On-Demand</button>
+    <button class="aw-tab today-tab active" onclick="switchTab('may7', this)">Thu · May 7 — Today</button>
+    <button class="aw-tab" onclick="switchTab('later', this)">May 13+ Upcoming</button>
+  </div>
+
+  <!-- MAY 5 -->
+  <div id="may5" class="aw-day">
+    <div class="aw-day-header">Tuesday, May 5 — SBA Virtual Summit <span class="aw-od-badge">Now On-Demand</span></div>
+    <div class="aw-sessions">
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sec">Cybersecurity</span><div class="aw-card-title">Protecting Your Business from Risk and Fraud</div><div class="aw-card-source">Visa · SBA Virtual Summit</div><div class="aw-card-desc">Fraud prevention strategies and risk management tactics for small business owners.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Access to Capital: Closing the Small Business Gap</div><div class="aw-card-source">Visa · SBA Virtual Summit</div><div class="aw-card-desc">How to bridge the gap between capital needs and available financing options.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-tech">Tech &amp; AI</span><div class="aw-card-title">Reclaim Your Time: Make AI Work for You</div><div class="aw-card-source">Google · SBA Virtual Summit</div><div class="aw-card-desc">Live demos on using Google AI tools to automate and streamline small business tasks.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-hr">HR &amp; Ops</span><div class="aw-card-title">Hiring Secrets: Staff Up Smart &amp; Fast</div><div class="aw-card-source">Paychex · SBA Virtual Summit</div><div class="aw-card-desc">Strategies to attract, vet, and onboard talent quickly while staying compliant.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-hr">HR &amp; Ops</span><div class="aw-card-title">Compensation &amp; Equity Trends 2026</div><div class="aw-card-source">TriNet · SBA Virtual Summit</div><div class="aw-card-desc">What smart leaders must act on now regarding pay structures, equity, and retention.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-mkt">Marketing</span><div class="aw-card-title">How to Win Your Next Contract: Write Stronger Proposals</div><div class="aw-card-source">Verizon · SBA Virtual Summit</div><div class="aw-card-desc">Stand out and win more bids with proven proposal frameworks.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">SBA.gov</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-mkt">Marketing</span><div class="aw-card-title">Beyond the Storefront: Smart Strategies for Growth</div><div class="aw-card-source">Amazon · SBA Virtual Summit</div><div class="aw-card-desc">Expanding your customer reach and revenue channels through e-commerce and digital tools.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.sba.gov/national-small-business-week" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAY 6 -->
+  <div id="may6" class="aw-day">
+    <div class="aw-day-header">Wednesday, May 6 — SCORE Learning Lab <span class="aw-od-badge">Now On-Demand</span></div>
+    <div class="aw-sessions">
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">11:00 AM</span><span class="aw-tz">ET · Recorded</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Business Credit 101: Build Credit, Access Funding &amp; Grow</div><div class="aw-card-source">SCORE · Sponsored by Experian</div><div class="aw-card-desc">How business credit works, why it differs from personal credit, and steps to build it over time.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/business-credit-101-build-credit-access-funding-and-grow-your-business" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">12:15 PM</span><span class="aw-tz">ET · Recorded</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-tech">Tech &amp; AI</span><div class="aw-card-title">AI for Small Business: Find Opportunities &amp; Take Action</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Live demos of AI tools solving common small business challenges — practical and hands-on.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/ai-for-small-business-find-opportunities-and-take-action" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">1:30 PM</span><span class="aw-tz">ET · Recorded</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Small Business Financial Management: Every Stage</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Building a stronger financial foundation and making smarter decisions as your business grows.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/small-business-financial-management-what-to-put-in-place-at-every-stage" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">2:45 PM</span><span class="aw-tz">ET · Recorded</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Access to Capital in 2026 — Choose, Prepare &amp; Qualify</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Navigating loans, grants, and other funding sources in today's uncertain landscape.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/access-to-capital-in-2026-how-to-choose-prepare-and-qualify" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">4:00 PM</span><span class="aw-tz">ET · Recorded</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sb">Small Business</span><div class="aw-card-title">The Boomerpreneur Roadmap: Leverage Your Unique Advantages</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">For entrepreneurs 50+: using experience, networks, and resources to launch lifestyle-aligned businesses.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/the-boomerpreneur-roadmap-how-to-leverage-your-unique-advantages" target="_blank">Watch <i class="ti ti-external-link"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAY 7 -->
+  <div id="may7" class="aw-day active">
+    <div class="aw-day-header">Thursday, May 7 — SCORE Learning Lab <span class="aw-today-badge">Live Today</span></div>
+    <div class="aw-sessions">
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">11:00 AM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sb">Small Business</span><div class="aw-card-title">Building a Business Plan That Works</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Essential sections every business plan needs and how to build a results-driven document.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/building-a-business-plan-that-works-key-elements-every-entrepreneur-needs" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">12:15 PM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-tech">Tech &amp; AI</span><div class="aw-card-title">Design Your Website to Attract, Engage &amp; Convert</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Website design fundamentals — structure, copy, and CTAs — to turn visitors into customers.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/how-to-design-your-website-to-attract-engage-and-convert-more-customers" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">1:00 PM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sec">Cybersecurity</span><div class="aw-card-title">Protecting Small Businesses from Scams</div><div class="aw-card-source">FTC + National Cybersecurity Alliance</div><div class="aw-card-desc">Identifying and defending against the scams and online threats most commonly targeting small businesses.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://consumer.ftc.gov/consumer-alerts/2026/05/welcome-national-small-business-week-2026" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">1:30 PM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-tech">Tech &amp; AI</span><div class="aw-card-title">AI in 2026: What's Changing &amp; What It Means for Small Business</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Strategic overview of how AI is shifting from tools to outcomes and what that means for competition.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/ai-in-2026-whats-changing-and-what-it-means-for-small-business" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">2:45 PM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sb">Small Business</span><div class="aw-card-title">How to Turn Your Side Hustle Into a Full-Time Business</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">Timing, financial readiness, and structural foundations needed before making the leap.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/how-to-turn-your-side-hustle-into-a-full-time-business" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">4:00 PM</span><span class="aw-tz">ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Finding Grants and Sponsorship Opportunities for Your Business</div><div class="aw-card-source">SCORE · Learning Lab</div><div class="aw-card-desc">How to identify, research, and apply for grants and sponsorships as alternatives to debt financing.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/course/finding-grants-and-sponsorships" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATER -->
+  <div id="later" class="aw-day">
+    <div class="aw-day-header">Upcoming sessions — May 13+</div>
+    <div class="aw-sessions">
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">Tue May 13</span><span class="aw-tz">11 AM ET</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-mkt">Marketing</span><div class="aw-card-title">AI-Enabled Marketing Teams: Building for What's Next</div><div class="aw-card-source">Gartner · Free Webinar</div><div class="aw-card-desc">How marketing leaders can build AI-ready teams, respond to changing buyer behavior, and demonstrate measurable value.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.gartner.com/en/marketing/events/webinars" target="_blank">RSVP <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">score.org</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-sb">Small Business</span><div class="aw-card-title">SCORE Academy: Ongoing Webinar Library</div><div class="aw-card-source">SCORE Academy</div><div class="aw-card-desc">All NSBW sessions from May 6–7 available as free replays. New webinars added weekly.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://academy.score.org/webinars" target="_blank">Browse <i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-time-col"><span class="aw-time">On-Demand</span><span class="aw-tz">gartner.com</span></div>
+        <div class="aw-body"><span class="aw-topic-pill pill-fin">Finance</span><div class="aw-card-title">Gartner: Finance &amp; CFO Webinar Library</div><div class="aw-card-source">Gartner · Free</div><div class="aw-card-desc">Ongoing series covering financial planning, risk, technology investment, and CFO priorities.</div></div>
+        <div class="aw-right"><span class="aw-free">🆓 Free</span><a class="aw-rsvp" href="https://www.gartner.com/en/webinars" target="_blank">Browse <i class="ti ti-external-link"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aw-footer">All times Eastern · Most sessions available as free replays after the live date · Sources: SCORE, SBA, FTC, Gartner · Updated May 7, 2026</div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.aw-day').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.aw-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
