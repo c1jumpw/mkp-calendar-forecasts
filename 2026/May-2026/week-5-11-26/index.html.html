@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlanta Business Events — May 11–17, 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #F4F1EB;
+      font-family: 'DM Sans', sans-serif;
+      color: #1C1C2E;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: #1A2744;
+      padding: 36px 40px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(230,75,30,0.12);
+      pointer-events: none;
+    }
+    .site-header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 30%;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .header-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #E8491E;
+      margin-bottom: 10px;
+    }
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 36px;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .header-subtitle {
+      color: #A3B0CC;
+      font-size: 14px;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .header-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #D0D9EC;
+    }
+    .stat-pill i { font-size: 14px; color: #E8491E; }
+
+    /* ── LEGEND ── */
+    .legend-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E4DDD2;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .legend-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #8A8070;
+      margin-right: 8px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #4A4A5A;
+      font-weight: 500;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 24px 60px;
+    }
+
+    /* ── REGION SECTIONS ── */
+    .region-section { margin-bottom: 48px; }
+    .region-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #DDD6CC;
+    }
+    .region-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: #1A2744;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .region-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #1A2744;
+    }
+    .region-count {
+      font-size: 11px;
+      font-weight: 600;
+      background: #E8491E;
+      color: #fff;
+      border-radius: 100px;
+      padding: 2px 9px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── EVENT CARDS ── */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .event-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      cursor: pointer;
+      border: 1px solid #EDE7DE;
+    }
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+    .event-card-accent {
+      height: 4px;
+      width: 100%;
+    }
+    .event-card-body { padding: 18px 20px 16px; }
+
+    .event-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .event-type-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+    .event-price-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 100px;
+      background: #F0EBE3;
+      color: #5A5040;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .highlight-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: #FFF3CD;
+      color: #7B5800;
+      padding: 3px 9px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .event-title {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1C1C2E;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .event-meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12.5px;
+      color: #5A5060;
+      font-weight: 400;
+    }
+    .event-meta-row i {
+      font-size: 14px;
+      color: #9A8E80;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .event-desc {
+      font-size: 12px;
+      color: #706860;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      display: none;
+    }
+    .event-card.expanded .event-desc { display: block; }
+
+    .event-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid #F0EBE3;
+    }
+    .event-rsvp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1A2744;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .event-rsvp-btn:hover { background: #E8491E; }
+    .event-rsvp-btn i { font-size: 13px; }
+
+    .expand-btn {
+      background: none;
+      border: 1px solid #DDD6CC;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #7A7060;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .expand-btn:hover { border-color: #1A2744; color: #1A2744; }
+    .expand-btn i { font-size: 13px; transition: transform 0.2s; }
+    .event-card.expanded .expand-btn i { transform: rotate(180deg); }
+
+    /* ── WEEK STRIP ── */
+    .week-strip {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 0 16px;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+    .week-strip::-webkit-scrollbar { display: none; }
+    .day-tab {
+      flex-shrink: 0;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      border: 1px solid #E4DDD2;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .day-tab:hover { background: #EDE7DE; }
+    .day-tab.active { background: #1A2744; border-color: #1A2744; }
+    .day-tab .day-name {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9A8E80;
+    }
+    .day-tab.active .day-name { color: #A3B0CC; }
+    .day-tab .day-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1C1C2E;
+      line-height: 1.1;
+    }
+    .day-tab.active .day-num { color: #FFFFFF; }
+    .day-tab .day-count {
+      font-size: 10px;
+      color: #B0A898;
+      font-weight: 500;
+    }
+    .day-tab.active .day-count { color: #A3B0CC; }
+    .day-tab .day-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #E8491E;
+      margin: 4px auto 0;
+      display: none;
+    }
+    .day-tab.has-events .day-dot { display: block; }
+
+    /* ── DESCRIPTIONS SECTION ── */
+    .desc-section {
+      margin-top: 56px;
+    }
+    .desc-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #DDD6CC;
+    }
+    .desc-section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #1A2744;
+    }
+    .desc-region-group { margin-bottom: 40px; }
+    .desc-region-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #1A2744;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .desc-region-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #DDD6CC;
+    }
+
+    .desc-item {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+      border-left: 3px solid #1A2744;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .desc-item-title {
+      font-weight: 600;
+      font-size: 14.5px;
+      color: #1A2744;
+      margin-bottom: 6px;
+    }
+    .desc-item-text {
+      font-size: 13.5px;
+      color: #505060;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #1A2744;
+      color: #6A7A9A;
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 12px;
+    }
+    .site-footer a { color: #A3B0CC; text-decoration: none; }
+
+    /* ── VIRTUAL BADGE ── */
+    .virtual-badge {
+      font-size: 10px;
+      font-weight: 600;
+      background: #E8F0FE;
+      color: #1A56C4;
+      padding: 2px 8px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 24px 20px 20px; }
+      .header-title { font-size: 26px; }
+      .legend-bar { padding: 12px 20px; }
+      .main-wrap { padding: 20px 14px 48px; }
+      .events-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────── HEADER ──────────── -->
+<header class="site-header">
+  <div class="header-eyebrow"><i class="ti ti-map-pin"></i> &nbsp;Atlanta Metro Area &nbsp;·&nbsp; Business Events</div>
+  <h1 class="header-title">Week of May 11–17, 2026</h1>
+  <p class="header-subtitle">Conferences · Tradeshows · Networking · Certification · Career Fairs</p>
+  <div class="header-stats">
+    <div class="stat-pill"><i class="ti ti-calendar-event"></i> 12 Events This Week</div>
+    <div class="stat-pill"><i class="ti ti-building-skyscraper"></i> 2 Metro Regions</div>
+    <div class="stat-pill"><i class="ti ti-currency-dollar"></i> 6 Free Events</div>
+    <div class="stat-pill"><i class="ti ti-brand-linkedin"></i> 7 Networking Opportunities</div>
+  </div>
+</header>
+
+<!-- ──────────── LEGEND ──────────── -->
+<div class="legend-bar">
+  <span class="legend-label">Event Type</span>
+  <div class="legend-item"><span class="legend-dot" style="background:#2563EB"></span> Tech / IT</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#16A34A"></span> Networking</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#9333EA"></span> Career / MBA</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#E8491E"></span> Entrepreneur / Franchise</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#0891B2"></span> Professional Dev</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#CA8A04"></span> Community Biz</div>
+</div>
+
+<!-- ──────────── MAIN ──────────── -->
+<main class="main-wrap">
+
+  <!-- WEEK STRIP -->
+  <div class="week-strip" id="weekStrip">
+    <div class="day-tab active has-events" data-day="all" onclick="filterDay(this,'all')">
+      <div class="day-name">All</div>
+      <div class="day-num">–</div>
+      <div class="day-count">Show all</div>
+    </div>
+    <div class="day-tab has-events" data-day="mon" onclick="filterDay(this,'mon')">
+      <div class="day-name">Mon</div>
+      <div class="day-num">11</div>
+      <div class="day-count">3 events</div>
+      <div class="day-dot"></div>
+    </div>
+    <div class="day-tab has-events" data-day="tue" onclick="filterDay(this,'tue')">
+      <div class="day-name">Tue</div>
+      <div class="day-num">12</div>
+      <div class="day-count">2 events</div>
+      <div class="day-dot"></div>
+    </div>
+    <div class="day-tab has-events" data-day="wed" onclick="filterDay(this,'wed')">
+      <div class="day-name">Wed</div>
+      <div class="day-num">13</div>
+      <div class="day-count">3 events</div>
+      <div class="day-dot"></div>
+    </div>
+    <div class="day-tab has-events" data-day="thu" onclick="filterDay(this,'thu')">
+      <div class="day-name">Thu</div>
+      <div class="day-num">14</div>
+      <div class="day-count">2 events</div>
+      <div class="day-dot"></div>
+    </div>
+    <div class="day-tab" data-day="fri" onclick="filterDay(this,'fri')">
+      <div class="day-name">Fri</div>
+      <div class="day-num">15</div>
+      <div class="day-count">0 events</div>
+    </div>
+    <div class="day-tab has-events" data-day="sat" onclick="filterDay(this,'sat')">
+      <div class="day-name">Sat</div>
+      <div class="day-num">16</div>
+      <div class="day-count">3 events</div>
+      <div class="day-dot"></div>
+    </div>
+    <div class="day-tab has-events" data-day="sun" onclick="filterDay(this,'sun')">
+      <div class="day-name">Sun</div>
+      <div class="day-num">17</div>
+      <div class="day-count">2 events</div>
+      <div class="day-dot"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ REGION 1: DOWNTOWN ATLANTA ═══════════ -->
+  <section class="region-section" id="region-downtown">
+    <div class="region-header">
+      <div class="region-icon"><i class="ti ti-building"></i></div>
+      <div class="region-name">Downtown Atlanta &amp; Midtown</div>
+      <span class="region-count">9 Events</span>
+    </div>
+    <div class="events-grid">
+
+      <!-- Red Hat Summit -->
+      <div class="event-card" data-days="mon,tue,wed,thu">
+        <div class="event-card-accent" style="background:#2563EB"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#DBEAFE;color:#1E40AF">🖥 Tech / IT</span>
+            <span class="event-price-badge"><i class="ti ti-ticket"></i> $799–$1,999</span>
+            <span class="highlight-badge"><i class="ti ti-star"></i> Major Event</span>
+          </div>
+          <div class="event-title">Red Hat Summit: Connect Atlanta</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Mon–Thu, May 11–14 · Multi-day</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Georgia World Congress Center, 285 Andrew Young Intl Blvd NW</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Enterprise IT, CIOs, Developers, DevOps</div>
+          </div>
+          <div class="event-desc">
+            Atlanta's biggest tech gathering this week. Brings together IT leaders, platform engineers, and developers to explore open-source technologies, hybrid cloud, Kubernetes, AI workloads, and enterprise DevOps. Features keynotes, deep-dive breakout sessions, an Expo Networking Reception, partner tracks, and a full "Hallway Track." Special pricing available for government, academic, and Red Hat Certified Professionals at $1,099.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.redhat.com/en/summit" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Register</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clear Admit MBA Fair -->
+      <div class="event-card" data-days="mon">
+        <div class="event-card-accent" style="background:#9333EA"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#F3E8FF;color:#7E22CE">🎓 MBA / Career</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">Clear Admit MBA Fair – Atlanta</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Mon, May 11 · 5:00 PM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Scheller College of Business, Georgia Tech</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> MBA Candidates, Admissions Officers</div>
+          </div>
+          <div class="event-desc">
+            A structured MBA admissions fair where top business school programs meet prospective applicants. Ideal for working professionals considering a graduate business degree. Offers direct face-time with admissions officers from nationally ranked programs — bring your questions and resume.
+          </div>
+          <div class="event-footer">
+            <a href="https://allevents.in/atlanta/business" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Info</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- YEC Beltline -->
+      <div class="event-card" data-days="mon">
+        <div class="event-card-accent" style="background:#16A34A"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#DCFCE7;color:#166534">🤝 Networking</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">YEC Beltline Networking Night</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Mon, May 11 · 6:30 PM · Weekly</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Atlanta Beltline (Eastside Trail)</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Young Entrepreneurs Collaborative</div>
+          </div>
+          <div class="event-desc">
+            Casual outdoor networking along Atlanta's iconic Beltline, hosted by the Young Entrepreneurs Collaborative. Happens every Monday — perfect for founders, freelancers, side-hustlers, and anyone looking for authentic connections without the formal event pressure.
+          </div>
+          <div class="event-footer">
+            <a href="https://atlantablackchambers.org/calendar-of-events/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> RSVP</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABC Tuesday Talks -->
+      <div class="event-card" data-days="tue">
+        <div class="event-card-accent" style="background:#CA8A04"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#FEF9C3;color:#854D0E">💬 Community Biz</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+            <span class="virtual-badge"><i class="ti ti-video"></i> Virtual</span>
+          </div>
+          <div class="event-title">ABC Tuesday Talks Virtual Roundtable</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Tue, May 12 · 8:30 AM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Virtual (Zoom) — Atlanta Black Chambers</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Black Entrepreneurs, Chamber Members</div>
+          </div>
+          <div class="event-desc">
+            Weekly Zoom conference hosted by ABC Executive Director Melvin Coleman featuring special guests sharing timely business intel, chamber member spotlights, and key updates for Atlanta's Black entrepreneurship community. Accessible from anywhere.
+          </div>
+          <div class="event-footer">
+            <a href="https://atlantablackchambers.org/calendar-of-events/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Register</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Red Hat (continues Tue) — already shown, covered above -->
+      <!-- ABC GOC Power Hour -->
+      <div class="event-card" data-days="wed">
+        <div class="event-card-accent" style="background:#CA8A04"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#FEF9C3;color:#854D0E">🌐 Community Biz</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+            <span class="virtual-badge"><i class="ti ti-video"></i> Virtual</span>
+          </div>
+          <div class="event-title">ABC GOC Weekly Power Hour</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Wed, May 13 · 8:30 AM · Weekly</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Online — Atlanta Black Chambers Global</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> International Business Owners</div>
+          </div>
+          <div class="event-desc">
+            The Global Operations Committee's Power Hour brings online participants together to share knowledge and insights from international business owners. A tight, focused virtual session ideal for globally-minded Atlanta entrepreneurs.
+          </div>
+          <div class="event-footer">
+            <a href="https://atlantablackchambers.org/calendar-of-events/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Register</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABC Black Health Social Mixer -->
+      <div class="event-card" data-days="wed">
+        <div class="event-card-accent" style="background:#16A34A"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#DCFCE7;color:#166534">🍹 Networking</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">ABC Black Health Social Mixer</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Wed, May 13 · 6:00 PM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Atlanta (Venue TBA)</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Health &amp; Wellness Professionals, Entrepreneurs</div>
+          </div>
+          <div class="event-desc">
+            Hosted by the Atlanta Black Chambers Health &amp; Wellness Committee, this in-person mixer brings together professionals, community members, and entrepreneurs at the intersection of health and business. Relaxed format, strong networking potential.
+          </div>
+          <div class="event-footer">
+            <a href="https://atlantablackchambers.org/calendar-of-events/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> RSVP</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlanta Business Social -->
+      <div class="event-card" data-days="wed">
+        <div class="event-card-accent" style="background:#16A34A"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#DCFCE7;color:#166534">🤝 Networking</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">Atlanta Business Social (Strive Networking)</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Wed, May 13 · 6:00 PM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Atlanta Metro (Venue via Meetup)</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Cross-industry Professionals (~20 attendees)</div>
+          </div>
+          <div class="event-desc">
+            A well-reviewed peer-to-peer evening networking event organized by Atlanta Business Social (Strive Networking group). Informal, approachable format for professionals across industries to meet, share ideas, and build genuine connections. Great for consultants, entrepreneurs, and career-driven professionals.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.meetup.com/find/us--ga--atlanta/professional-networking/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Meetup</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlanta Career Fair -->
+      <div class="event-card" data-days="thu">
+        <div class="event-card-accent" style="background:#9333EA"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#F3E8FF;color:#7E22CE">💼 Career Fair</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">Atlanta Career Fair — May 14</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Thu, May 14</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Atlanta Metro (Venue TBA)</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Job Seekers &amp; Top Employers</div>
+          </div>
+          <div class="event-desc">
+            A multi-employer hiring event connecting job seekers with top companies across sectors. Professionals at all career stages can meet recruiters face-to-face, submit resumes, and explore open roles. Business professional attire recommended. Confirm venue via Eventbrite link.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.eventbrite.com/d/ga--atlanta/business/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Eventbrite</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SGNA Annual Course -->
+      <div class="event-card" data-days="sun">
+        <div class="event-card-accent" style="background:#0891B2"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#CFFAFE;color:#0E7490">📋 Professional Dev</span>
+            <span class="event-price-badge"><i class="ti ti-ticket"></i> Paid (Member/Non)</span>
+            <span class="highlight-badge"><i class="ti ti-certificate"></i> Cert Eligible</span>
+          </div>
+          <div class="event-title">SGNA 53rd Annual Course</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Sun, May 17 · 8:00 AM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Hyatt Regency Atlanta, 265 Peachtree St NE</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Gastroenterology Nurses &amp; Associates</div>
+          </div>
+          <div class="event-desc">
+            The Society of Gastroenterology Nurses and Associates' flagship national continuing education conference. Focused on clinical skill-building, certification preparation, and professional advancement in GI nursing and endoscopy. CME/CE credits available. Relevant for clinical and administrative healthcare professionals.
+          </div>
+          <div class="event-footer">
+            <a href="https://allevents.in/atlanta/workshops" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Info</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /events-grid -->
+  </section>
+
+  <!-- ═══════════ REGION 2: COBB COUNTY ═══════════ -->
+  <section class="region-section" id="region-cobb">
+    <div class="region-header">
+      <div class="region-icon" style="background:#E8491E;"><i class="ti ti-map-2"></i></div>
+      <div class="region-name">Cobb County — Smyrna · Marietta</div>
+      <span class="region-count">3 Events</span>
+    </div>
+    <div class="events-grid">
+
+      <!-- Great American Franchise Expo -->
+      <div class="event-card" data-days="sat,sun">
+        <div class="event-card-accent" style="background:#E8491E"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#FFEDD5;color:#9A3412">🏪 Franchise / Expo</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free (Attendee)</span>
+            <span class="highlight-badge"><i class="ti ti-star"></i> Major Event</span>
+          </div>
+          <div class="event-title">Great American Franchise Expo</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Sat–Sun, May 16–17</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Cobb Galleria Centre, 2 Galleria Pkwy SE, Smyrna</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Aspiring Franchise Owners, Investors, Entrepreneurs</div>
+          </div>
+          <div class="event-desc">
+            One of America's premier franchise trade show circuits, connecting hundreds of franchise businesses with potential owners. Features free workshops and seminars on franchise law, financing, and operations. Exhibitors include The UPS Store, Dunkin', Anytime Fitness, and Kona Ice. Ideal for anyone exploring business ownership through franchising.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.franexpousa.com/attend-franchise-expo" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Register Free</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Powerteam Entrepreneur Summit -->
+      <div class="event-card" data-days="sat">
+        <div class="event-card-accent" style="background:#E8491E"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#FFEDD5;color:#9A3412">🚀 Entrepreneur</span>
+            <span class="event-price-badge"><i class="ti ti-ticket"></i> Varies</span>
+          </div>
+          <div class="event-title">Powerteam Entrepreneur Business Show &amp; Summit</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Sat, May 16 · 11:00 AM</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> Cobb Galleria Centre, 2 Galleria Pkwy SE, Smyrna</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Business Owners, Aspiring Entrepreneurs</div>
+          </div>
+          <div class="event-desc">
+            A co-located event at Cobb Galleria combining an entrepreneurship summit, business show, and franchise expo. Features keynote speakers, panels, and exhibitors serving small and mid-size business owners. Designed for both aspiring and established entrepreneurs to learn, connect, and discover service providers and mentors.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.eventbrite.com/b/ga--atlanta/business/" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Eventbrite</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- N.O.W. Networking Marietta -->
+      <div class="event-card" data-days="mon,tue,wed,thu,fri">
+        <div class="event-card-accent" style="background:#16A34A"></div>
+        <div class="event-card-body">
+          <div class="event-badge-row">
+            <span class="event-type-badge" style="background:#DCFCE7;color:#166534">🔗 Networking</span>
+            <span class="event-price-badge" style="background:#DCFCE7;color:#166534"><i class="ti ti-currency-dollar"></i> Free</span>
+          </div>
+          <div class="event-title">N.O.W. — Networking Opportunity Weekly (Marietta)</div>
+          <div class="event-meta">
+            <div class="event-meta-row"><i class="ti ti-calendar"></i> Ongoing Weekly — Check schedule</div>
+            <div class="event-meta-row"><i class="ti ti-map-pin"></i> The Third Door, Marietta Square</div>
+            <div class="event-meta-row"><i class="ti ti-users"></i> Cobb County Business Owners &amp; Professionals</div>
+          </div>
+          <div class="event-desc">
+            Hosted by the Marietta Business Association at The Third Door on Marietta Square, N.O.W. is a recurring weekly structured networking series purpose-built to support and connect local Cobb County businesses. Free, consistent, and community-oriented — ideal for small business owners looking for a reliable local networking touchpoint.
+          </div>
+          <div class="event-footer">
+            <a href="https://www.mariettabusiness.org/n-o-w" target="_blank" class="event-rsvp-btn"><i class="ti ti-external-link"></i> Info</a>
+            <button class="expand-btn" onclick="toggleExpand(event, this)"><i class="ti ti-chevron-down"></i> Details</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ DESCRIPTIONS ═══════════ -->
+  <div class="desc-section">
+    <div class="desc-section-header">
+      <i class="ti ti-notes" style="font-size:26px;color:#1A2744"></i>
+      <h2 class="desc-section-title">Event Summaries by Region</h2>
+    </div>
+
+    <!-- Downtown -->
+    <div class="desc-region-group">
+      <h3 class="desc-region-title"><i class="ti ti-building" style="color:#1A2744;font-size:16px"></i> Downtown Atlanta &amp; Midtown</h3>
+
+      <div class="desc-item" style="border-left-color:#2563EB">
+        <div class="desc-item-title">🔴 Red Hat Summit: Connect Atlanta — May 11–14</div>
+        <div class="desc-item-text">Atlanta's flagship tech enterprise event of the week. Running four days at the Georgia World Congress Center, it targets IT leaders, software developers, CISOs, and open-source contributors through a dense schedule of keynotes, lab sessions, and ecosystem partner days. Tracks cover hybrid cloud, Kubernetes, AI/ML workload management, Linux, and supply chain security. The Expo Networking Reception offers structured peer connections, and the "Hallway Track" is legendary for unplanned high-value conversations. Ticket range from $799 (group, 3+) to $1,999 at the door.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#9333EA">
+        <div class="desc-item-title">🎓 Clear Admit MBA Fair – May 11 · 5 PM</div>
+        <div class="desc-item-text">A focused admissions fair where top MBA programs meet prospective applicants face-to-face at Georgia Tech's Scheller College of Business. Perfect for mid-career professionals ready to explore graduate business education. Free to attend; bring business cards and questions for admissions officers.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#16A34A">
+        <div class="desc-item-title">🚶 YEC Beltline Networking Night — Every Monday · 6:30 PM</div>
+        <div class="desc-item-text">A recurring casual outdoor networking event on the Atlanta Beltline's Eastside Trail, hosted by the Young Entrepreneurs Collaborative. No agenda, no badges — just founders, creatives, and professionals walking and talking. One of Atlanta's most organic networking formats and completely free.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#CA8A04">
+        <div class="desc-item-title">💬 ABC Tuesday Talks Virtual Roundtable — May 12 · 8:30 AM</div>
+        <div class="desc-item-text">The Atlanta Black Chambers' weekly virtual roundtable hosted on Zoom by Executive Director Melvin Coleman. Covers timely updates for Black entrepreneurs, features guest speakers, and spotlights chamber members. Free and accessible from anywhere.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#CA8A04">
+        <div class="desc-item-title">🌐 ABC GOC Weekly Power Hour — May 13 · 8:30 AM</div>
+        <div class="desc-item-text">The Global Operations Committee's focused online Power Hour where participants gain knowledge from international business owners. A short, high-signal virtual session for the globally-minded Atlanta entrepreneur. Free to attend via the ABC calendar.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#16A34A">
+        <div class="desc-item-title">🍹 ABC Black Health Social Mixer — May 13 · 6 PM</div>
+        <div class="desc-item-text">Hosted by the Atlanta Black Chambers Health &amp; Wellness Committee, this after-work mixer blends community building with business networking around health themes. Free, in-person, and welcoming — confirm venue closer to the date via the ABC calendar.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#16A34A">
+        <div class="desc-item-title">🤝 Atlanta Business Social (Strive Networking) — May 13 · 6 PM</div>
+        <div class="desc-item-text">A well-reviewed Wednesday evening professional networking meetup organized by Strive Networking / Atlanta Business Social. Draws roughly 20 cross-industry professionals in an informal format. Great for consultants, early-stage entrepreneurs, and career-focused professionals seeking genuine peer connections. Free, venue via Meetup RSVP.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#9333EA">
+        <div class="desc-item-title">💼 Atlanta Career Fair — May 14</div>
+        <div class="desc-item-text">A multi-employer in-person hiring event connecting job seekers with top Atlanta-area companies across industries. Free to attend; business-professional attire recommended. Bring printed resumes and be ready for on-the-spot recruiter conversations. Venue to be confirmed via Eventbrite.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#0891B2">
+        <div class="desc-item-title">🏥 SGNA 53rd Annual Course — May 17 · 8 AM · Hyatt Regency Atlanta</div>
+        <div class="desc-item-text">The Society of Gastroenterology Nurses and Associates' premier national conference for continuing education and certification. Held at the Hyatt Regency Atlanta (265 Peachtree St NE), it covers clinical skill-building, certification pathways, and professional development for GI nursing and endoscopy professionals. CME/CE credits available for eligible attendees.</div>
+      </div>
+    </div>
+
+    <!-- Cobb County -->
+    <div class="desc-region-group">
+      <h3 class="desc-region-title"><i class="ti ti-map-2" style="color:#E8491E;font-size:16px"></i> Cobb County — Smyrna &amp; Marietta</h3>
+
+      <div class="desc-item" style="border-left-color:#E8491E">
+        <div class="desc-item-title">🏪 Great American Franchise Expo — May 16–17 · Cobb Galleria Centre</div>
+        <div class="desc-item-text">One of America's most established franchise trade show circuits lands at Cobb Galleria Centre for a two-day event free to attendees. Hundreds of franchise concepts across dozens of industries are on display, including The UPS Store, Dunkin', Anytime Fitness, and Kona Ice. Features free educational seminars on franchise law, financing models, and business operations. Ideal for anyone seriously exploring entrepreneurship through the franchise route.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#E8491E">
+        <div class="desc-item-title">🚀 Powerteam Entrepreneur Business Show &amp; Summit — May 16 · 11 AM · Cobb Galleria Centre</div>
+        <div class="desc-item-text">A co-located event at Cobb Galleria combining an entrepreneurship conference, business show, and franchise expo format. Features keynote speakers and panels for both aspiring and established business owners. Good for discovering service providers, tools, mentors, and potential partners. Pricing varies by tier — check Eventbrite for current rates.</div>
+      </div>
+
+      <div class="desc-item" style="border-left-color:#16A34A">
+        <div class="desc-item-title">🔗 N.O.W. — Networking Opportunity Weekly · The Third Door, Marietta Square</div>
+        <div class="desc-item-text">The Marietta Business Association's recurring weekly structured networking series at The Third Door on the historic Marietta Square. Purpose-built to support and grow connections among Cobb County's local business community. Free, welcoming, and consistent — one of the North Metro's most reliable networking touchpoints for small business owners and professionals.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer class="site-footer">
+  <p>Atlanta Metro Business Events · Week of May 11–17, 2026 · <a href="https://www.eventbrite.com/d/ga--atlanta/business/" target="_blank">Eventbrite Atlanta</a> · <a href="https://atlantablackchambers.org/calendar-of-events/" target="_blank">Atlanta Black Chambers</a> · <a href="https://www.mariettabusiness.org/n-o-w" target="_blank">Marietta Business Assoc.</a></p>
+  <p style="margin-top:6px;font-size:11px;">Always confirm event details &amp; venues with organizers before attending. Prices and dates subject to change.</p>
+</footer>
+
+<script>
+  function toggleExpand(e, btn) {
+    e.stopPropagation();
+    const card = btn.closest('.event-card');
+    card.classList.toggle('expanded');
+    btn.innerHTML = card.classList.contains('expanded')
+      ? '<i class="ti ti-chevron-up"></i> Less'
+      : '<i class="ti ti-chevron-down"></i> Details';
+  }
+
+  function filterDay(tab, day) {
+    // Update tabs
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // Filter cards
+    document.querySelectorAll('.event-card').forEach(card => {
+      if (day === 'all') {
+        card.style.display = '';
+      } else {
+        const days = (card.dataset.days || '').split(',');
+        card.style.display = days.includes(day) ? '' : 'none';
+      }
+    });
+
+    // Show/hide empty region sections
+    document.querySelectorAll('.region-section').forEach(section => {
+      const visible = [...section.querySelectorAll('.event-card')]
+        .some(c => c.style.display !== 'none');
+      section.style.display = visible ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
